@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">JobSchedulerActivity</string>
+    <string name="schedule_job">Schedule a Job</string>
+    <string name="log_message">New Message</string>
+    <string name="job_scheduled_successfully">Job Successfully Scheduled</string>
+    <string name="image_view">Image View</string>
+</resources>
