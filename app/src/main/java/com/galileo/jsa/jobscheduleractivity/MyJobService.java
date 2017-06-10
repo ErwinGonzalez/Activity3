@@ -1,9 +1,5 @@
 package com.galileo.jsa.jobscheduleractivity;
 
-/**
- * Created by EEVGG on 08/06/2017.
- */
-
 import android.app.DownloadManager;
 import android.app.job.JobParameters;
 import android.app.job.JobService;
@@ -21,8 +17,8 @@ public class MyJobService extends JobService {
     public boolean onStartJob(JobParameters params) {
         // Note: this is preformed on the main thread.
         Log.d(TAG, "onStartJob id=" + params.getJobId());
-        updateTask.execute(params);
-        return true;
+        startDownload();
+        return false;
     }
 
     // Stopping jobs if our job requires change.
@@ -47,7 +43,6 @@ public class MyJobService extends JobService {
 
         @Override
         protected JobParameters[] doInBackground(JobParameters... params) {
-            startDownload();
             // Do updating and stopping logical here.
             Log.d(TAG, "Updating apps in the background");
             return params;
