@@ -9,6 +9,7 @@ import android.app.job.JobParameters;
 import android.app.job.JobService;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.util.Log;
 import android.app.DownloadManager.Request;
 import android.widget.Toast;
@@ -34,10 +35,13 @@ public class MyJobService extends JobService {
         return true;
     }
     public void startDownload(){
+
         dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
         Request request = new Request(
-                Uri.parse("https://www.edx.org/sites/default/files/mediakit/image/thumb/edx_logo_200x200.png"));
+                Uri.parse("https://www.edx.org/sites/default/files/theme/edx-logo-header.png"));
         request.setNotificationVisibility(Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        // file is saved in Storage>Internal>Android>Data>package>files>jobScheduler
+        request.setDestinationInExternalFilesDir(this,"/jobScheduler","logo.png");
         dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
         dm.enqueue(request);
     }
