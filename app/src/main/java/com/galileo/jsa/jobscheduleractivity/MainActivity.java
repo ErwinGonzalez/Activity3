@@ -24,8 +24,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void scheduleJob() {
         ComponentName serviceName = new ComponentName(this, MyJobService.class);
+        //Job needs at least one parameter, otherwise it'll crash
         JobInfo jobInfo = new JobInfo.Builder(JOB_ID, serviceName)
                 .setRequiresDeviceIdle(true)
+                // you can use setOverrideDeadline to force the job execution after some time
+                //.setOverrideDeadline(400L)
                 .build();
     }
 
